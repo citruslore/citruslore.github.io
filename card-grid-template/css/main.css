@@ -1,0 +1,132 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.panels {
+    display: grid;
+    grid: initial;
+    grid-template-rows: 1fr;
+    grid-template-columns: 48px 1fr;
+
+    width: 100vw;
+    height: 100vh
+}
+
+.panel-toolbar {
+    background-color: #222;
+}
+
+.panel-main {
+    display: flex;
+    background-color: #444;
+    justify-content: center;
+    align-items: center;
+}
+
+.template {
+    width: min(100%, 68.85vh);
+    aspect-ratio: 0.6885;
+    display: grid;
+
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1px;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.card img,
+.card-corner img
+{
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 0;
+    z-index: 1;
+    display: block;
+    box-sizing: border-box;
+    transition: background-color .1s;
+}
+
+.card:hover::after {
+    background-color: #8547ff88;
+}
+
+.card.selected::after {
+    border: 2px solid #8547ff;
+}
+
+.palette {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1px;
+    padding: 5px;
+    background-color: #111;
+}
+
+.palette-card {
+    position: relative;
+    width: 48px;
+    aspect-ratio: 0.6885;
+    background-size: contain;
+    background-color: #FFF;
+}
+
+.palette-card img {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.palette-card::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 0;
+    z-index: 1;
+    display: block;
+    box-sizing: border-box;
+}
+
+.palette-card:hover::after {
+    background-color: #8547ff88;
+}
+
+.toolbar-button {
+    aspect-ratio: 1;
+    background-size: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #FFF2;
+    border-radius: 100%;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.toolbar-button:hover {
+    background-color: #FFF4;
+}
+
+@media print {
+    .panel-toolbar {
+        display: none;
+    }
+
+    .panels {
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+    }
+}
