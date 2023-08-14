@@ -22,8 +22,8 @@ CardGridTemplate = (function () {
                 templateRandomize();
                 hidePalette();
             } else if (e.target.classList.contains('toolbar-button-print')) {
-                templatePrint();
                 hidePalette();
+                templatePrint();
             } else {
                 hidePalette();
             }
@@ -84,6 +84,8 @@ CardGridTemplate = (function () {
     }
 
     function templatePrint () {
+        if (dom.selectedCard) dom.selectedCard.classList.remove('selected');
+        dom.selectedCard = null;
         print();
     }
 
